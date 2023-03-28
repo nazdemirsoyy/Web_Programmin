@@ -1,0 +1,17 @@
+<!--By clicking on a button, display "Hello world" somewhere in the document you choose!-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello World</title>
+	<script>
+		function displayHello() {
+			document.getElementById("hello").innerHTML = "Hello World!";
+		}
+	</script>
+</head>
+<body>
+	<button onclick="displayHello()">Click me!</button>
+	<p id="hello"></p>
+</body>
+</html>
