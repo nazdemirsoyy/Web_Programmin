@@ -139,7 +139,7 @@ for (let i = 0; i < num.length; i++) {
     if (num[i] < 0) {
       console.log(`Negative number found: ${num[i]}`);
     }
-  }
+}
 
 //Count even numbers in a series of numbers
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -166,4 +166,150 @@ console.log(gcd(12, 18)); // Output: 6
 console.log(gcd(15, 25)); // Output: 5
 console.log(gcd(35, 42)); // Output: 7
 
-  
+
+//An array of numbers is given. Put the prime numbers in a new array!
+function getPrimes(arr) {
+  const primes = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (isPrime(arr[i])) {
+      primes.push(arr[i]);
+    }
+  }
+  return primes;
+}
+
+function isPrime(num) {
+  if (num < 2) {
+    return false;
+  }
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+// example usage:
+const numbers2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const primes = getPrimes(numbers2);
+console.log(primes); // [2, 3, 5, 7]
+
+//Decide whether all of the elements of a matrix are even numbers!
+function allEven(matrix) {
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] % 2 !== 0) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+// example usage:
+const matrix1 = [
+  [2, 4, 6],
+  [8, 10, 12],
+  [14, 16, 18]
+];
+console.log(allEven(matrix1)); // true
+
+
+
+//For a couple of days, we measured the air temperature every noon. Solve the following tasks!
+//a. Select the values when it was freezing!
+
+const temperature2 = [0,-6,4,23,18,8];
+const freezing =  [];
+
+function isFreeze(temperature2){
+  for(let i = 0; i <temperature2.length;i++){
+    if(temperature2[i] <=  0){
+      freezing.push(temperature2[i]);
+    }
+  }
+  return freezing;
+}
+
+
+console.log(isFreeze(temperature2));
+
+//At the end of each temperature, put the C text!
+const temperaturesWithC = temperature2.map((temp) => temp + "C");
+
+console.log(temperaturesWithC); 
+
+//What is the highest temperature value
+let highestTemp = temperature2[0]; //let highest be the first elem
+
+for (let i = 1; i < temperature2.length; i++) {
+  if (temperature2[i] > highestTemp) {
+    highestTemp = temperature2[i];
+  }
+}
+
+console.log(highestTemp); 
+
+
+//How many times the temperature went below 20 degrees!
+
+let count2 = 0;
+
+for(let i = 0 ; i < temperature2.length; i++){
+  if(temperature2[i] < 20 ){
+    count2++;
+  }
+}
+
+console.log(count2);
+
+//Decide whether there is a value over 40 degrees!
+let over40 = false;
+
+for (let i = 0; i < temperature2.length; i++) {
+  if (temperature2[i] > 40) {
+    over40 = true;
+    break;
+  }
+}
+
+console.log(over40);
+
+
+//Decide whether each temperature value is positive!
+numPos = false;
+
+for (let i = 0; i < temperature2.length; i++) {
+  if (temperature2[i] > 0) {
+    numPos = true;
+    break;
+  }
+}
+
+console.log(numPos);
+
+// Enter the first value when the temperature went up to 10 degrees!
+let firstUpTo10 = null;
+
+for (let i = 0; i < temperature2.length; i++) {
+  if (temperature2[i] >= 10) {
+    firstUpTo10 = temperature2[i];
+    break;
+  }
+}
+
+console.log(firstUpTo10);
+
+// diff up to 10
+const diffUpTo10 = [];
+
+for (let i = 1; i < temperature2.length; i++) {
+  const diff = Math.abs(temperature2[i] - temperature2[i-1]);
+  if (diff > 10) {
+    diffUpTo10.push(temperature2[i-1], temperature2[i]);
+  }
+}
+
+console.log(diffUpTo10);
+
