@@ -1,0 +1,43 @@
+<!--On page load, display the maiden name field, if the female radio button is checked! Use the "click" event of the radio buttons! Use the hidden property of radio buttons for changing the appearance!
+
+<input type="radio" name="sex" value="male" checked /> male
+<input type="radio" name="sex" value="female" /> female Maiden name:
+<input id="maiden_name" />
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="radio" name="sex" value="male" checked /> male
+    <input type="radio" name="sex" value="female" /> female 
+    Maiden name: 
+    <input id="maiden_name" hidden />
+
+    <script>
+        const femaleRadio = document.querySelector('input[value="female"]');
+        const maleRadio = document.querySelector('input[value="male"]');
+        const maidenNameField = document.getElementById('maiden_name');
+      
+        if (femaleRadio.checked) {
+          maidenNameField.hidden = false;
+        } else {
+          maidenNameField.hidden = true;
+        }
+      
+        femaleRadio.addEventListener('click', () => {
+          maidenNameField.hidden = !femaleRadio.checked;
+        });
+      
+        maleRadio.addEventListener('click', () => {
+          maidenNameField.hidden = true;
+        });
+    </script>
+
+</body>
+</html>

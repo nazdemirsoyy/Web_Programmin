@@ -1,0 +1,22 @@
+<!--In a text field write an URL of an image. By clicking a button show the image in the document!-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image Viewer</title>
+	<script>
+		function showImage() {
+			var imageUrl = document.getElementById("image-url").value;
+			var image = document.createElement("img");
+			image.src = imageUrl;
+			document.getElementById("image-container").appendChild(image);
+		}
+	</script>
+</head>
+<body>
+	<label for="image-url">Enter the URL of an image:</label>
+	<input type="text" id="image-url">
+	<button onclick="showImage()">Show Image</button>
+	<div id="image-container"></div>
+</body>
+</html>

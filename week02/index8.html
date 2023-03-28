@@ -1,0 +1,27 @@
+<!--On page load, list the urls of all of the the hyperlinks!-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>List Hyperlink URLs</title>
+	<script>
+		window.onload = function() {
+			var links = document.getElementsByTagName("a");
+			var urls = document.getElementById("urls");
+			for (var i = 0; i < links.length; i++) {
+				var url = links[i].href;
+				var listItem = document.createElement("li");
+				var linkText = document.createTextNode(url);
+				listItem.appendChild(linkText);
+				urls.appendChild(listItem);
+			}
+		};
+	</script>
+</head>
+<body>
+	<a href="http://www.elte.hu">ELTE</a>
+	<a href="http://webprogramozas.inf.elte.hu">Web programming</a>
+	<a href="http://www.inf.elte.hu">ELTE Faculty of Informatics</a>
+	<ul id="urls"></ul>
+</body>
+</html>

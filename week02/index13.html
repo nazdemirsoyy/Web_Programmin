@@ -1,0 +1,147 @@
+<!--In a library catalogue book data are given. For one book we store:
+    author
+    title
+    year of publish
+    publisher
+1. Ask a year in an input field, and list those books which were published in that year!
+2. Fill a dropdown list with the name of the publishers. Selecting one publisher show the books of that publisher in a table!
+3. Typing in a text input, for every keystroke refresh a list of books which contains the typed-in substring.-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Library Catalogue</title>
+  </head>
+  <body>
+     <!--1-->
+    <h1>Library Catalogue</h1>
+    <label for="yearInput">Enter a year:</label>
+    <input type="text" id="yearInput">
+    <button id="searchButton">Search</button>
+    <br>
+    <!--2-->
+    <br>
+    <label for="publisherSelect">Select a publisher:</label>
+    <select id="publisherSelect"></select>
+    <button id="searchByPublisherButton">Search</button>
+    <br>
+    <br>
+     <!--3-->
+    <input type="text" id="search-input" placeholder="Search for a book...">
+
+    <ul id="bookList"></ul>
+
+    <table id="bookTable">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Year of Publish</th>
+            <th>Publisher</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+    <script>
+      // Sample book data
+      const books = [
+        { author: 'J.K. Rowling', title: 'Harry Potter and the Philosopher\'s Stone', yearOfPublish: 1997, publisher: 'Bloomsbury' },
+        { author: 'J.K. Rowling', title: 'Harry Potter and the Chamber of Secrets', yearOfPublish: 1998, publisher: 'Bloomsbury' },
+        { author: 'J.K. Rowling', title: 'Harry Potter and the Prisoner of Azkaban', yearOfPublish: 1999, publisher: 'Bloomsbury' },
+        { author: 'J.K. Rowling', title: 'Harry Potter and the Goblet of Fire', yearOfPublish: 2000, publisher: 'Bloomsbury' },
+        { author: 'J.K. Rowling', title: 'Harry Potter and the Order of Phoenix', yearOfPublish: 2003, publisher: 'Bloomsbury' },
+        { author: 'J.K. Rowling', title: 'Harry Potter and the Half-Blood Prince', yearOfPublish: 2005, publisher: 'Bloomsbury' },
+        { author: 'J.K. Rowling', title: 'Harry Potter and the Deathly Hallows', yearOfPublish: 2007, publisher: 'Bloomsbury' },
+        { author: 'J.R.R. Tolkien', title: 'The Hobbit', yearOfPublish: 1937, publisher: 'George Allen & Unwin' },
+        { author: 'J.R.R. Tolkien', title: 'The Lord of the Rings', yearOfPublish: 1954, publisher: 'George Allen & Unwin' },
+        { author: 'J.R.R. Tolkien', title: 'The Silmarillion', yearOfPublish: 1977, publisher: 'George Allen & Unwin' },
+      ];
+
+    // Get references to the input and button elements
+      const yearInput = document.getElementById('yearInput');
+      const searchButton = document.getElementById('searchButton');
+
+    // Get a reference to the book table body element
+      const bookTableBody = document.querySelector('#bookTable tbody');
+
+    // Add a click event listener to the search button
+      searchButton.addEventListener('click', () => {
+    // Get the year from the input element
+        const year = parseInt(yearInput.value);
+
+    // Filter the books by the year of publish
+        const filteredBooks = books.filter((book) => {
+          return book.yearOfPublish === year;
+        });
+
+        // Get a reference to the book list element
+        const bookList = document.getElementById('bookList');
+
+        // Clear any existing book list items
+        bookList.innerHTML = '';
+
+        // Create a new list item for each book and append it to the book list element
+        filteredBooks.forEach((book) => {
+          const listItem = document.createElement('li');
+          listItem.textContent = `${book.title} by ${book.author}`;
+          bookList.appendChild(listItem);
+        });
+      });
+
+
+        //2
+        // Create a set of publishers from the books data
+        const publishers = new Set(books.map(book => book.publisher));
+
+        // Fill the dropdown list with the names of the publishers
+        const publisherSelect = document.getElementById('publisherSelect');
+        publishers.forEach(publisher => {
+        const option = document.createElement('option');
+        option.value = publisher;
+        option.text = publisher;
+        publisherSelect.appendChild(option);
+        });
+
+        // Show the books of the selected publisher in the table
+        publisherSelect.addEventListener('change', (event) => {
+        const selectedPublisher = event.target.value;
+        const bookTableBody = document.querySelector('#bookTable tbody');
+        bookTableBody.innerHTML = '';
+        const filteredBooks = books.filter(book => book.publisher === selectedPublisher);
+        filteredBooks.forEach(book => {
+        const row = bookTableBody.insertRow();
+        row.insertCell().textContent = book.title;
+        row.insertCell().textContent = book.author;
+        row.insertCell().textContent = book.yearOfPublish;
+        row.insertCell().textContent = book.publisher;
+        });
+  });
+        //2
+
+        //3
+        const searchInput = document.getElementById("search-input");
+        const bookList = document.getElementById("book-list");
+
+        searchInput.addEventListener("keyup", event => {
+        const searchText = event.target.value.toLowerCase();
+        const filteredBooks = books.filter(book =>
+        book.title.toLowerCase().includes(searchText) ||
+        book.author.toLowerCase().includes(searchText)
+        );
+
+        // Clear the book list
+        while (bookList.firstChild) {
+        bookList.removeChild(bookList.firstChild);
+        }
+        // Display the filtered books in the list
+        filteredBooks.forEach(book => {
+        const li = document.createElement("li");
+        li.textContent = `${book.title} by ${book.author} (${book.year})`;
+        bookList.appendChild(li);
+        });
+        });
+         //3
+    </script>
+  </body>
+</html>

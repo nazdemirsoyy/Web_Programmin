@@ -1,0 +1,22 @@
+<!--Two text input fields and a button are given. Clicking on a button copy the content of one input field into the other!-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Input Field Copier</title>
+	<script>
+		function copyContent() {
+			var source = document.getElementById("source-input");
+			var destination = document.getElementById("destination-input");
+			destination.value = source.value;
+		}
+	</script>
+</head>
+<body>
+	<label for="source-input">Enter some text:</label>
+	<input type="text" id="source-input">
+	<button onclick="copyContent()">Copy to Destination</button>
+	<label for="destination-input">Copied text:</label>
+	<input type="text" id="destination-input">
+</body>
+</html>

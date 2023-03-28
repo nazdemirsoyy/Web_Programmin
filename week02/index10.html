@@ -1,0 +1,43 @@
+<!--Write a counter component!
+a. The counter consists of a readonly input field and two buttons (increase, decrease). By pressing the buttons the number in the input field increases or decreases by 1.
+b. Define a minimum and a maximum value for the counter. If the number reaches one of them, then make the corresponding button disabled!-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Counter Component</title>
+	<script>
+		function increment() {
+			var inputField = document.getElementById("counter");
+			var currentValue = parseInt(inputField.value);
+			var maxValue = parseInt(inputField.max);
+			if (currentValue < maxValue) {
+				inputField.value = currentValue + 1;
+			}
+			if (inputField.value == maxValue) {
+				document.getElementById("increment-button").disabled = true;
+			}
+			document.getElementById("decrement-button").disabled = false;
+		}
+
+		function decrement() {
+			var inputField = document.getElementById("counter");
+			var currentValue = parseInt(inputField.value);
+			var minValue = parseInt(inputField.min);
+			if (currentValue > minValue) {
+				inputField.value = currentValue - 1;
+			}
+			if (inputField.value == minValue) {
+				document.getElementById("decrement-button").disabled = true;
+			}
+			document.getElementById("increment-button").disabled = false;
+		}
+	</script>
+</head>
+<body>
+	<label for="counter">Counter:</label>
+	<input type="number" id="counter" value="0" min="0" max="10" readonly>
+	<button id="increment-button" onclick="increment()">+</button>
+	<button id="decrement-button" onclick="decrement()">-</button>
+</body>
+</html>

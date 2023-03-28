@@ -1,0 +1,51 @@
+<!--On page load, create a table of contents from the h1, h2, h3, etc. elements-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Table of Contents Example</title>
+  </head>
+  <body>
+    <h1>Table of Contents Example</h1>
+    <p>This is a paragraph.</p>
+    <h2>Section 1</h2>
+    <p>This is another paragraph.</p>
+    <h3>Subsection 1.1</h3>
+    <p>This is yet another paragraph.</p>
+    <h2>Section 2</h2>
+    <p>This is a final paragraph.</p>
+
+    <script>
+      // Get all the heading elements on the page
+      const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+      // Create a new unordered list element to hold the table of contents
+      const tocList = document.createElement('ul');
+
+      // Traverse the heading elements and create a list item with a link to each heading
+      headings.forEach((heading) => {
+        const listItem = document.createElement('li');
+        const link = document.createElement('a');
+        const headingText = heading.textContent;
+
+        // Set the link href to the heading's ID attribute, if it has one
+        if (heading.id) {
+          link.href = `#${heading.id}`;
+        }
+
+        // Set the link text to the heading text
+        link.textContent = headingText;
+
+        // Add the link to the list item and the list item to the table of contents list
+        listItem.appendChild(link);
+        tocList.appendChild(listItem);
+      });
+
+      // Add the table of contents to the page
+      const tocContainer = document.createElement('div');
+      tocContainer.className = 'toc';
+      tocContainer.appendChild(tocList);
+      document.body.insertBefore(tocContainer, document.body.firstChild);
+    </script>
+  </body>
+</html>
