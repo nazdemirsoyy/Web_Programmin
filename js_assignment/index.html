@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boop Kitten Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <button id="startButton">Start </button>
+  <button id="restartButton">Restart </button>
+    <div class="game-container">
+        <div class="player player1">
+          <h3>Player 1 Kittens</h3>
+          <div class="kittens"></div>
+          <p>Score: <span id="player1-score">0</span></p>
+        </div>
+        <div class="grid-container"></div>
+        <div class="player player2">
+          <h3>Player 2 Kittens</h3>
+          <div class="kittens"></div>
+          <p>Score: <span id="player2-score">0</span></p>
+        </div>
+      </div>
+
+    
+    <audio id="game-start-sound" src="start.mp3" preload="auto"></audio>
+    <audio id="cat-push-sound" src="cat_push.mp3" preload="auto"></audio>
+    <audio id="win-sound" src="win.wav" preload="auto"></audio>
+    <audio id="cat-add-sound" src="cat_add.mp3" preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
