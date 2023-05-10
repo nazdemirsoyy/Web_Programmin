@@ -1,7 +1,6 @@
 # Statement
 
 <NAZ DEMIRSOY>
-<BLD0YM>
 
 This solution was submitted and created by the student named above for the JavaScript home project assessment of the Web Programming course.
 
