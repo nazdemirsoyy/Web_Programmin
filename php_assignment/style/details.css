@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 10px;
+    padding: 0;
+    text-align: center;
+    background-color:rgb(252, 243, 230);
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.track {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    width: 30%;
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.track:hover {
+    transform: scale(1.05);
+}
+
+.track h2 {
+    margin-top: 0;
+}
