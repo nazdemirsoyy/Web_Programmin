@@ -1,0 +1,21 @@
+{
+    "playlist1": {
+        "id": "playlist1",
+        "name": "Best early 2000s hits",
+        "user_id": "userid2",
+        "tracks": [
+            "track1",
+            "track2",
+            "track3"
+        ]
+    },
+    "playlist2": {
+        "id": "playlist2",
+        "name": "Pretty ladies who sing",
+        "user_id": "userid1",
+        "tracks": [
+            "track1",
+            "track3"
+        ]
+    }
+}
